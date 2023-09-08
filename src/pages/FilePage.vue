@@ -1,13 +1,16 @@
 <template>
   <div class="file-wrapper">
     <div class="file-group">
-      <v-file-input v-model="file" :loading="fileLoading" color="primary" @update:model-value="uploadFile" show-size variant="solo"
-        label="Файл zip опроса"></v-file-input>
-      <div class="file-file elevation-2 mx-1" v-for="i in files">
+      <v-file-input v-model="file" :loading="fileLoading" color="primary" @update:model-value="uploadFile" show-size
+        variant="solo" label="Файл zip опроса" accept=".zip"></v-file-input>
+      <div @click="router.push({
+        name: 'FileDashboard', query: { id: i.id }
+      })" class="file-file elevation-2 mx-1" v-for="i in files">
         <div>
           {{ i.name }}
         </div>
-        <v-btn color="danger" icon="mdi-trash-can-outline" @click="deleteFile(i.id)" density="comfortable" variant="text"></v-btn>
+        <v-btn color="danger" icon="mdi-trash-can-outline" @click="deleteFile(i.id)" density="comfortable"
+          variant="text"></v-btn>
       </div>
     </div>
   </div>
@@ -16,7 +19,9 @@
 import { ref } from 'vue';
 import { FileController } from '@/api/controllers/FileController';
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const file = ref();
 const fileLoading = ref(false)
 const files = ref([])

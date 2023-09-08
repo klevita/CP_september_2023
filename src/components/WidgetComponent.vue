@@ -2,7 +2,9 @@
   <div class="widget-card elevation-2">
     <div class="widget-card-title">{{ props.title }}</div>
     <div class="widget-card-body">
-      <slot name="default"></slot>
+      <slot name="default">
+
+      </slot>
     </div>
   </div>
 </template>
@@ -15,14 +17,21 @@ const props = defineProps({
 .widget-card {
   border-radius: 10px;
   background-color: white;
-  .widget-card-title{
+  display: flex;
+  flex-direction: column;
+
+  .widget-card-title {
     font-size: 16px;
     font-weight: 500;
-    margin: 12px;
+    margin: 16px;
+    color: $text-light;
+    padding: 0 0 12px 4px;
     border-bottom: 1px solid $text-lighter;
   }
-  .widget-card-body{
 
+  .widget-card-body {
+    padding: 12px;
+    flex-grow: 1;
   }
 }
 </style> 

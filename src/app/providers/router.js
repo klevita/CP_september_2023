@@ -29,6 +29,11 @@ const routes = [
         name: "Emotion",
         path: "/emotion",
         component: () => import("@/pages/EmotionPage.vue"),
+      }, 
+      {
+        name: "FileDashboard",
+        path: "/fileDashboard",
+        component: () => import("@/pages/DashboardPage.vue"),
       },
     ],
   },
