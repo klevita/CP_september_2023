@@ -13,10 +13,13 @@
           </div>
         </Transition>
       </div>
+      <div class="rosatom-logo">
+        <img :src="rosatomLogo" />
+      </div>
       <div v-click-outside="() => {
         menuShown = false;
       }
-        " class="search-avatar-group" @click="menuShown = !menuShown">
+        " class="search-avatar-group" v-ripple @click="menuShown = !menuShown">
         <AvatarComponent size="50px"></AvatarComponent>
         <v-icon icon="mdi-chevron-down" size="small" color="grey-lighten-1"></v-icon>
         <Transition name="slide-x-reverse-transition" @click.stop>
@@ -33,6 +36,9 @@
         </Transition>
       </div>
     </div>
+    <div style="width:100%;height:100%">
+      <RouterView></RouterView>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -40,6 +46,7 @@ import { AvatarComponent } from "@/components";
 import { ref } from "vue";
 import { NavMenuMain } from "@/components";
 import { useUserStore } from "@/stores";
+import rosatomLogo from "assets/rosatom-logo.png"
 import { router } from "@/app/providers";
 
 const userStore = useUserStore();
@@ -64,9 +71,11 @@ function logout() {
   height: 100vh;
 }
 
+
+
 .header-wrapper {
   @apply shadow-sm;
-  height: 70px;
+  height: 78px;
   padding: 0 0 0 8px;
   transition: all 0.5s ease;
   width: 100%;
@@ -79,6 +88,15 @@ function logout() {
   &> :last-child {
     display: flex;
     align-items: center;
+  }
+
+  .rosatom-logo {
+    padding: 14px;
+    height: 100%;
+
+    img {
+      height: 100%;
+    }
   }
 
   .header-left-menu {
@@ -94,24 +112,7 @@ function logout() {
     border-radius: 10px;
   }
 
-  .search-avatar-group {
-    display: flex;
-    align-items: center;
-    box-sizing: content-box;
-    position: relative;
-    padding: 10px 12px 10px 12px;
-    cursor: pointer;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.085);
-    }
-
-    &> :first-child {
-      margin-right: 2px;
-    }
-
-
-  }
 
 }
 
@@ -120,7 +121,7 @@ function logout() {
   align-items: center;
   box-sizing: content-box;
   position: relative;
-  padding: 10px 12px 10px 12px;
+  padding: 14px 12px 14px 12px;
   cursor: pointer;
 
   &:hover {

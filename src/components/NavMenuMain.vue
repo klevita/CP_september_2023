@@ -7,16 +7,16 @@
 import NavMenuItem from "./NavMenuItem.vue";
 
 const routes = [
-  // {
-  //   name: "features.nav.homeNav",
-  //   icon: "mdi-home-outline",
-  //   routeName: "Home",
-  // },
-  // {
-  //   name: "features.nav.activityNav",
-  //   icon: "mdi-gauge",
-  //   routeName: "Efficiency",
-  // },
+  {
+    name: "Домашняя",
+    icon: "mdi-home-outline",
+    routeName: "Home",
+  },
+  {
+    name: "Тональность комментария",
+    icon: "mdi-focus-field-horizontal",
+    routeName: "Emotion",
+  },
   // {
   //   name: "features.nav.CICDNav",
   //   icon: "mdi-rocket-launch-outline",

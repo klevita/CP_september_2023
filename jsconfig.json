@@ -38,6 +38,9 @@
   "include": [
     "src/**/*.js",
     "src/**/*.d.js",
+    "src/**/*.png",
+    "src/**/*.svg",
+    "src/**/*.gif",
     "src/**/*.jsx",
     "src/**/*.vue"
   ],

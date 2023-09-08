@@ -23,7 +23,12 @@ const routes = [
       {
         name: "Home",
         path: "/home",
-        component: () => import("@/pages/HomePage.vue"),
+        component: () => import("@/pages/FilePage.vue"),
+      },
+      {
+        name: "Emotion",
+        path: "/emotion",
+        component: () => import("@/pages/EmotionPage.vue"),
       },
     ],
   },

@@ -11,6 +11,9 @@
           <div class="auth-card-form-forgot-link">Забыли пароль?</div>
         </div>
         <div class="auth-card-form-action-btns">
+          <v-btn @click="loginGuest()" class="auth-card-btn" rounded variant="text" color="secondary">
+            Войти как гость
+          </v-btn>
           <v-btn @click="loginUser()" class="auth-card-btn" rounded variant="elevated" color="secondary">
             Войти
           </v-btn>
@@ -19,7 +22,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
 import { useUserStore } from "@/stores"
 import { useRouter } from "vue-router";
@@ -31,10 +34,10 @@ const form = ref()
 
 
 const login = ref("");
-const loginRules = [(v: string) => (v.length ? true : "Поле обязательно")];
+const loginRules = [(v) => (v.length ? true : "Поле обязательно")];
 
 const pass = ref("");
-const passRules = [(v: string) => (v.length ? true : "Поле обязательно")];
+const passRules = [(v) => (v.length ? true : "Поле обязательно")];
 
 const remeber = ref(false);
 
@@ -49,6 +52,10 @@ async function loginUser() {
       error.value = true
     }
   }
+}
+async function loginGuest() {
+  await userStorage.login('predictodemo', 'predictodemo')
+  router.push('/')
 }
 </script>
 <style scoped lang="scss">

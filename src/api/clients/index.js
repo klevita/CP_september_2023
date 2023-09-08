@@ -1,2 +1,4 @@
 import { authHttpClient } from "./AuthHttpClient";
-export { authHttpClient };
+import { MyVoteHttpClient } from "./MyVoteHttpClient";
+import { DenisHttpClient } from "./DenisHttpClient"
+export { authHttpClient, MyVoteHttpClient, DenisHttpClient };

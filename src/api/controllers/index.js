@@ -1,2 +1,3 @@
 import { AuthController } from "./AuthController"
-export { AuthController }
+import { EmotionController } from "./EmotionsController"
+export { AuthController, EmotionController }
