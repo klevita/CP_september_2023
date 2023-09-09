@@ -64,7 +64,7 @@ const backgroundColor = ref("#e5e5e5")
 </script>
 <style scoped lang="scss">
 .emotions-wrapper {
-  height: 100%;
+  height: calc(100dvh - 90px);
   width: 100%;
   display: flex;
   justify-content: center;

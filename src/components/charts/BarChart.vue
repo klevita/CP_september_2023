@@ -39,6 +39,12 @@ const chartOptions = {
   tooltip: {
     show: true,
   },
+  grid: {
+    left: 30,
+    top: 50,
+    bottom: 20,
+    right: 30
+  },
   yAxis: {
     type: 'category',
     axisLine: { show: false },

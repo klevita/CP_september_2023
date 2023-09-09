@@ -23,7 +23,6 @@ const chartData = ref([])
 const select = ref("positive")
 const getData = async () => {
   chartData.value = await AnalyticController.getTop(route.query.id, select.value)
-  console.log(chartData.value)
 }
 onMounted(getData)
 </script>

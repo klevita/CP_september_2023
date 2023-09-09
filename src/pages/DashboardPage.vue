@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard-wrapper">
     <div>
+      <EmotionalDestribution />
+    </div>
+    <div>
       <TopQuestionsWidget />
     </div>
 
@@ -26,6 +29,7 @@
   </div>
 </template>
 <script setup>
+import EmotionalDestribution from '@/components/EmotionalDestribution.vue';
 import IndicatorComponent from '@/components/IndicatorComponent.vue';
 import TopQuestionsWidget from '@/components/TopQuestionsWidget.vue';
 import WidgetComponent from '@/components/WidgetComponent.vue';
