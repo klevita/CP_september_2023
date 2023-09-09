@@ -1,11 +1,14 @@
 <template>
   <div class="dashboard-wrapper">
-    
+    <div>
+      <TopQuestionsWidget />
+    </div>
+
     <div class="indicators-group">
       <WidgetComponent title="Бублик">
         <template #default>
           <PieChart :chart-data="{
-            name: 'lal', data: [{ value: 10, name: 'kek' }, { value: 20, name: 'kak' }]
+            name: 'lal', data: [{ value: 160, name: 'negative' }, { value: 870, name: 'neutral' }, { value: 50, name: 'positive' }]
           }" />
         </template>
       </WidgetComponent>
@@ -24,7 +27,9 @@
 </template>
 <script setup>
 import IndicatorComponent from '@/components/IndicatorComponent.vue';
+import TopQuestionsWidget from '@/components/TopQuestionsWidget.vue';
 import WidgetComponent from '@/components/WidgetComponent.vue';
+import BarChart from '@/components/charts/BarChart.vue';
 import PieChart from '@/components/charts/PieChart.vue'
 </script>
 <style scoped lang="scss">
@@ -32,6 +37,10 @@ import PieChart from '@/components/charts/PieChart.vue'
   display: flex;
   flex-direction: column;
   padding: 24px;
+
+  &>div {
+    margin-bottom: 24px;
+  }
 
   .indicators-group {
     display: flex;

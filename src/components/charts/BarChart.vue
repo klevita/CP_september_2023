@@ -1,5 +1,6 @@
 <template>
-  <div ref="chartEntry" style="width: 100%; height: 100%; background-color: white"></div>
+  <div ref="chartEntry" style="width: 100%; height: 100%; background-color: white">
+  </div>
 </template>
 <script setup>
 import * as echarts from "echarts";
@@ -13,53 +14,45 @@ const props = defineProps({
 });
 
 const chartSerieDefault = {
-  type: "pie",
-  radius: ["90%", "50%"],
-  left: "24%",
-  avoidLabelOverlap: false,
-  itemStyle: {
-    borderRadius: 10,
-    borderColor: "#fff",
-    borderWidth: 2,
-  },
+  type: 'bar',
+  showBackground: true,
   label: {
-    formatter: () => {
-      let data = 0;
-      chartOptions.series[0].data.forEach((v) => [
-        data += v.value
-      ])
-      return "all " + data
-    },
-    fontSize: 20,
-    fontWeight: "bold",
-    position: "center",
+    show: true,
+    formatter: "{c}",
+    position: 'inside'
   },
-  color: ["red", "#F1CC22", "green"],
-  emphasis: {
-    itemStyle: {
-      borderColor: "none",
-      shadowColor: "rgba(0, 0, 0, 0.5)",
-    },
-  },
-  labelLine: {
-    show: false,
-  },
-};
+  backgroundStyle: {
+    color: 'rgba(180, 180, 180, 0.2)'
+  }
+}
 
 const chartOptions = {
+  xAxis: {
+    type: 'value',
+    position: 'top',
+    splitLine: {
+      lineStyle: {
+        type: 'dashed'
+      }
+    }
+  },
   tooltip: {
-    trigger: "item",
+    show: true,
   },
-  legend: {
-    left: "left",
-    top: "3%",
-    orient: "vertical",
+  yAxis: {
+    type: 'category',
+    axisLine: { show: false },
+    axisLabel: { show: false },
+    axisTick: { show: false },
+    splitLine: { show: false },
   },
-  series: [],
+  series: [
+
+  ]
 };
 
-function setChartSeries(chartSerie) {
-  chartOptions.series = [{ ...chartSerieDefault, ...chartSerie }];
+function setChartSeries(chartData) {
+  chartOptions.series = [{ ...chartSerieDefault, data: chartData.map((v) => [v.count, v.name]) }];
 }
 
 function buildChart(chartSerie) {

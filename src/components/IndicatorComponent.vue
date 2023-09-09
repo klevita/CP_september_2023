@@ -21,8 +21,8 @@ const props = defineProps({
   padding: 20px;
   .indicator-title {
     font-size: 16px;
-    font-weight: 500;
-    color: $text-lighter;
+    font-weight: 400;
+    color: $text-light;
     padding-bottom: 12px;
   }
 
