@@ -4,13 +4,18 @@
       <v-file-input v-model="file" :loading="fileLoading" color="primary" @update:model-value="uploadFile" show-size
         variant="solo" label="Файл zip опроса" accept=".zip"></v-file-input>
       <div @click="router.push({
-        name: 'FileDashboard', query: { id: i.id }
+        name: 'SelectDashboard', query: { id: i.id }
       })" class="file-file elevation-2 mx-1" v-for="i in files">
         <div>
           {{ i.name }}
         </div>
-        <v-btn color="danger" icon="mdi-trash-can-outline" @click="deleteFile(i.id)" density="comfortable"
-          variant="text"></v-btn>
+        <div class="d-flex align-center ">
+          <div class="mr-3">
+            {{ i.createdAt.slice(0, 10) + " " + i.createdAt.slice(11, 16) }}
+          </div>
+          <v-btn color="danger" icon="mdi-trash-can-outline" @click.stop="deleteFile(i.id)" density="comfortable"
+            variant="text"></v-btn>
+        </div>
       </div>
     </div>
   </div>

@@ -35,6 +35,21 @@ const routes = [
         path: "/fileDashboard",
         component: () => import("@/pages/DashboardPage.vue"),
       },
+      {
+        name: "QuestionDashboard",
+        path: "/questionDashboard",
+        component: () => import("@/pages/DashboardQuestionPage.vue"),
+      },
+      {
+        name: "SelectDashboard",
+        path: "/selectDashboard",
+        component: () => import("@/pages/DashboardSelectPage.vue"),
+      },
+      {
+        name: "FileDashboard",
+        path: "/fileDashboard",
+        component: () => import("@/pages/DashboardPage.vue"),
+      },
     ],
   },
   {

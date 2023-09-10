@@ -1,11 +1,7 @@
 <template>
   <div class="common-table-wrapper">
     <div v-if="tableData.tableRows.length" class="common-table-body">
-      <div class="common-table-selectors">
-        <v-text-field v-model="search" label="Поиск" color="#523ae5" variant="underlined"
-          prepend-inner-icon="mdi-magnify"></v-text-field>
-      </div>
-      <v-data-table v-model:items-per-page="countRows" :headers="tableData.tableHeaders" :items="tableItemsFiltered"
+      <v-data-table v-model:items-per-page="countRows" :headers="tableData.tableHeaders" :items="tableData.tableRows"
         item-value="name"></v-data-table>
     </div>
   </div>
@@ -14,26 +10,16 @@
 import { VDataTable } from "vuetify/lib/labs/components.mjs";
 import { ref, onMounted, watch, computed } from "vue";
 
-const countRows = ref(10)
-
-const search = ref("");
+const countRows = ref(6)
 const tableData = ref({ tableHeaders: [], tableRows: [] });
-
-
-const tableItemsFiltered = computed(() => {
-  if (search.value.length) {
-    return tableData.value.tableRows.filter((v) => v.name.includes(search.value))
-  }
-  return tableData.value.tableRows
-});
 
 const props = defineProps({
   tableRows: Object,
   tableHeaders: Object
 })
 watch([() => props.tableRows, () => props.tableHeaders], ([rows, headers]) => {
-  tableData.value = { tableHeaders: headers, tableRows: rows }
-  console.log(tableData.value)
+
+  tableData.value = { tableHeaders: [headers[1], headers[2], headers[0], headers[3], headers[4]], tableRows: rows }
 })
 </script>
 <style scoped lang="scss">

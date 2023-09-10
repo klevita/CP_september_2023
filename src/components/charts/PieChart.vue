@@ -28,13 +28,13 @@ const chartSerieDefault = {
       chartOptions.series[0].data.forEach((v) => [
         data += v.value
       ])
-      return "all " + data
+      return "всего " + data
     },
     fontSize: 20,
     fontWeight: "bold",
     position: "center",
   },
-  color: ["red", "#F1CC22", "green"],
+  color: ["red", "#00AA00", "#F1CC22"],
   emphasis: {
     itemStyle: {
       borderColor: "none",

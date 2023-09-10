@@ -19,7 +19,10 @@ const chartSerieDefault = {
   label: {
     show: true,
     formatter: "{c}",
-    position: 'inside'
+    align: "center",
+    borderColor: "transparent",
+    color: "black",
+    position: [280, 20]
   },
   backgroundStyle: {
     color: 'rgba(180, 180, 180, 0.2)'
@@ -36,6 +39,7 @@ const chartOptions = {
       }
     }
   },
+  color: ["#523ae5"],
   tooltip: {
     show: true,
   },

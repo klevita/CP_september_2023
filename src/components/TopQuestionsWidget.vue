@@ -1,9 +1,9 @@
 <template>
-  <WidgetComponent title="Бар" style="width:100%;height:600px">
+  <WidgetComponent title="Популярные вопросы">
     <template #default>
-      <v-select variant="underlined" class="mx-14 ml-14" hide-details :items="['positive', 'negative', 'neutral']"
+      <v-select variant="underlined" class="mx-7" hide-details :items="['Позитивные', 'Негативные', 'Нейтральные']"
         v-model="select" @update:model-value="getData()"></v-select>
-      <div style="height:460px">
+      <div style="height:520px">
         <BarChart :chart-data='chartData' />
       </div>
     </template>
@@ -20,9 +20,21 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 const chartData = ref([])
 
-const select = ref("positive")
+const select = ref("Позитивные")
 const getData = async () => {
-  chartData.value = await AnalyticController.getTop(route.query.id, select.value)
+  let lal = "positive"
+  if (select.value == 'Позитивные') {
+    lal = 'positive'
+  }
+  if (select.value == 'Негативные') {
+    lal = 'negative'
+  }
+  if (select.value == 'Нейтральные') {
+    lal = 'neutral'
+  }
+
+  const resp = await AnalyticController.getTop(route.query.fileId, route.query.questionId, lal)
+  chartData.value = resp.reverse()
 }
 onMounted(getData)
 </script>

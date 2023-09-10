@@ -3,7 +3,10 @@
     <div class="emotions-question">
       <v-text-field v-model="answer" @update:model-value="setEmotion" color="primary" variant="solo" placeholder="Ответ">
         <template #prepend-inner>
-          Вопросы?
+          <div style="width:140px">Как Ваши дела?</div>
+        </template>
+        <template #append>
+          <v-btn color="primary" @click="check()">Проверить</v-btn>
         </template>
       </v-text-field>
     </div>
@@ -11,6 +14,8 @@
 </template>
 <script setup lang="ts">
 import { EmotionController } from '@/api/controllers';
+import { CensorController } from '@/api/controllers/CensorController';
+import { PuntoController } from '@/api/controllers/PuntoSwitcherController';
 import { ref } from 'vue';
 
 const answer = ref("")
@@ -59,6 +64,13 @@ async function setEmotion(str: string) {
   }
 }
 
+async function check() {
+  const resp = await PuntoController.getTranslation(answer.value)
+  const spellCheck = await EmotionController.getSpellCheck(resp.message)
+  await setEmotion(spellCheck.spells[0])
+  answer.value = (await CensorController.censorStr(spellCheck.spells[0])).censored
+}
+
 const backgroundColor = ref("#e5e5e5")
 
 </script>
@@ -74,8 +86,8 @@ const backgroundColor = ref("#e5e5e5")
 
   .emotions-question {
     display: flex;
-    max-width: 400px;
-    width: 100%;
+    width: 600px;
+    min-width: 33%;
   }
 }
 </style>

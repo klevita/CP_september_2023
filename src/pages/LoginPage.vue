@@ -67,6 +67,8 @@ async function loginGuest() {
   align-items: center;
   display: flex;
   justify-content: space-around;
+  background-image: url('src/assets/rosatom-back.webp');
+  background-size: cover;
 
   .auth-card {
     @apply shadow;

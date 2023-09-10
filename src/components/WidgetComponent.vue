@@ -21,7 +21,7 @@ const props = defineProps({
   flex-direction: column;
 
   .widget-card-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     margin: 16px;
     color: $text-light;

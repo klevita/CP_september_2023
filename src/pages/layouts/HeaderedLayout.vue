@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <div class="header-wrapper">
+    <div class="header-wrapper elevation-2">
       <div>
         <v-btn v-click-outside="() => {
           leftMenuShown = false;
@@ -8,12 +8,13 @@
           " icon="mdi-menu" variant="flat" @click="leftMenuShown = !leftMenuShown" />
 
         <Transition name="slide-x-transition">
-          <div v-show="leftMenuShown" class="header-left-menu">
+          <div v-show="leftMenuShown" class="header-left-menu  elevation-2">
             <NavMenuMain />
           </div>
         </Transition>
+        <v-btn icon="mdi-subdirectory-arrow-left" @click="router.go(-1)" variant="text"></v-btn>
       </div>
-      <div class="rosatom-logo">
+      <div class="rosatom-logo" @click="router.push({ name: 'Home' })">
         <img :src="rosatomLogo" />
       </div>
       <div v-click-outside="() => {
@@ -93,6 +94,7 @@ function logout() {
   .rosatom-logo {
     padding: 14px;
     height: 100%;
+    cursor: pointer;
 
     img {
       height: 100%;
